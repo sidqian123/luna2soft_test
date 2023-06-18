@@ -1,0 +1,2 @@
+regsub.o: \
+  /Users/sidqian/Downloads/netbsd-src-trunk/tools/gcc/../../external/gpl3/gcc.old/dist/gcc/regsub.c

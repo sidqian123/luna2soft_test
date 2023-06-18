@@ -1,0 +1,1 @@
+/Users/sidqian/Downloads/netbsd-src-trunk/tools/gmp/../../external/lgpl3/gmp/dist/mpn/x86_64/coreinhm/redc_1.asm

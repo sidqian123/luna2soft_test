@@ -1,0 +1,31 @@
+#	$NetBSD: Makefile.openssl,v 1.15 2023/05/18 12:01:58 martin Exp $
+
+.ifndef _MAKEFILE_OPENSSL_INCLUDED
+_MAKEFILE_OPENSSL_INCLUDED=1
+
+.include <bsd.own.mk>
+WARNS=3
+# would require changing a lot of code
+COPTS+= -Wno-error=cast-qual -Wno-error=discarded-qualifiers
+COPTS+= -Wno-error=missing-field-initializers -Wno-error=char-subscripts
+COPTS+= -Wno-error=shadow
+
+
+.if ${HAVE_OPENSSL} <= 11
+OSSL_ENGINESDIR=/usr/lib/openssl
+.else
+.	if defined(MLIBDIR)
+OSSL_LIBDIR=/usr/lib/${MLIBDIR}/openssl
+.	else
+OSSL_LIBDIR=/usr/lib/openssl
+.	endif
+OSSL_ENGINESDIR=${OSSL_LIBDIR}/engines
+OSSL_MODULESDIR=${OSSL_LIBDIR}/modules
+.endif
+
+OPENSSLSRC=	${CRYPTODIST}/external/bsd/${EXTERNAL_OPENSSL_SUBDIR}/dist
+CPPFLAGS+=	-DOPENSSLDIR=\"/etc/openssl\"
+CPPFLAGS+=	-DENGINESDIR=\"${OSSL_ENGINESDIR}\"
+CPPFLAGS+=	-DMODULESDIR=\"${OSSL_MODULESDIR}\"
+
+.endif

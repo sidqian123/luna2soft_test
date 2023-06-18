@@ -1,0 +1,5 @@
+version.o: \
+  /Users/sidqian/Downloads/netbsd-src-trunk/tools/gmake/../../external/gpl2/gmake/dist/version.c \
+  config.h
+
+config.h:
